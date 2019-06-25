@@ -9,7 +9,7 @@ image: ubuntu:xenial
     - ln -s /usr/lib/libfl.so.2.0.0 /usr/lib/x86_64-linux-gnu/libfl.so.2
     - cd kernel
     - apt-get update -qyy
-    - apt-get install -qyy curl bc sudo make git build-essential
+    - apt-get install -qyy curl bc perl make git build-essential
     - apt-get --yes install libglib2.0-dev curl flex g++-multilib gcc-multilib gnupg gperf lib32ncurses5-dev lib32z1-dev libesd0-dev libncurses5-dev libsdl1.2-dev libwxgtk-media3.0-dev libxml2 libxml2-utils lzop pngcrush schedtool squashfs-tools xsltproc zip zlib1g-dev
     - git clone https://bitbucket.org/matthewdalex/arm-linux-androideabi-4.9.git
     - export PATH=$PATH:$PWD/arm-linux-androideabi-4.9/bin/
