@@ -12,7 +12,8 @@ image: ubuntu:xenial
     - export ARCH_MTK_PLATFORM=mt6582
     - export SUBARCH=arm
     - export CROSS_COMPILE=$PWD/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
-    - make versatile_defconfig
+    - export CROSS_COMPILE=arm-linux-
+    - make defconfig
     - make zImage
 job_compiling: 
   stage: build
