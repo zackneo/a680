@@ -11,7 +11,7 @@ image: ubuntu:xenial
     - export ARCH_MTK_PLATFORM=mt6582
     - export SUBARCH=arm
     - export CROSS_COMPILE=$PWD/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9/bin/aarch64-linux-android-
-    - make tubass_defconfig
+    - make versatile_defconfig
     - make -j4
     - curl --upload-file arch/arm/boot/Image.gz-dtb https://transfer.sh/Image.gz-dtb |grep transfer
 job_compiling: 
