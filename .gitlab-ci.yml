@@ -10,9 +10,8 @@ image: ubuntu:xenial
     - export TARGET_PRODUCT=huaqin82_wet_e_jb5
     - export ARCH_MTK_PLATFORM=mt6582
     - export SUBARCH=arm
-    - export CROSS_COMPILE=$PWD/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9/bin/aarch64-linux-android-
-    - make versatile_defconfig
-    - make -j4
+    - export CROSS_COMPILE=$PWD/android_prebuilts_gcc_linux-x86_aarch64_aarch64-linux-android-4.9/bin/aarch64-linux-android
+    - make O=out -j24 
     - curl --upload-file arch/arm/boot/Image.gz-dtb https://transfer.sh/Image.gz-dtb |grep transfer
 job_compiling: 
   stage: build
