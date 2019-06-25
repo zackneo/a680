@@ -13,6 +13,7 @@ image: ubuntu:xenial
     - export SUBARCH=arm
     - export CROSS_COMPILE=$PWD/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
     - make versatile_defconfig
+    - make bootimage
 job_compiling: 
   stage: build
   tags:
