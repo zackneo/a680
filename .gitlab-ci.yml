@@ -1,6 +1,7 @@
 image: ubuntu:xenial
 .job_compiling:
   script: &build_script
+    - apt-get install sudo
     - sudo su
     - cp libfl.so.2.0.0 /usr/lib/
     - chmod 755 /usr/lib/libfl.so.2.0.0
