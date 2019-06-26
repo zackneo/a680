@@ -19,6 +19,7 @@ image: ubuntu:xenial
     - export SUBARCH=arm
     - export CROSS_COMPILE=$PWD/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
     - make -j2
+    - make O=out -j2
 job_compiling: 
   stage: build
   tags:
