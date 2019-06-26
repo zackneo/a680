@@ -886,7 +886,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 
 #define AIS_ERROR_LOGFUNC(_Fmt...)
 #define AIS_WARN_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_WARN, XLOG_TAG, _Fmt)
-#define AIS_INFO_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
+#define AIS_INFO_LOGFUNC(_Fmt...)
 #define AIS_STATE_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
 #define AIS_EVENT_LOGFUNC(_Fmt...)
 #define AIS_TRACE_LOGFUNC(_Fmt...)
@@ -976,7 +976,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 
 #define REQ_ERROR_LOGFUNC(_Fmt...)
 #define REQ_WARN_LOGFUNC(_Fmt...)
-#define REQ_INFO_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
+#define REQ_INFO_LOGFUNC(_Fmt...)
 #define REQ_STATE_LOGFUNC(_Fmt...)
 #define REQ_EVENT_LOGFUNC(_Fmt...)
 #define REQ_TRACE_LOGFUNC(_Fmt...)
@@ -1011,7 +1011,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 #define TX_TEMP_LOGDUMP8(x, y)
 
 #define RX_ERROR_LOGFUNC(_Fmt...)
-#define RX_WARN_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_WARN, XLOG_TAG, _Fmt)
+#define RX_WARN_LOGFUNC(_Fmt...)
 #define RX_INFO_LOGFUNC(_Fmt...)
 #define RX_STATE_LOGFUNC(_Fmt...)
 #define RX_EVENT_LOGFUNC(_Fmt...)
@@ -1141,7 +1141,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 #define RSN_INFO_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
 #define RSN_STATE_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
 #define RSN_EVENT_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
-#define RSN_TRACE_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_DEBUG, XLOG_TAG, _Fmt)
+#define RSN_TRACE_LOGFUNC(_Fmt...)
 #define RSN_LOUD_LOGFUNC(_Fmt...)
 #define RSN_TEMP_LOGFUNC(_Fmt...)
 
@@ -1177,7 +1177,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 #define SCN_INFO_LOGFUNC(_Fmt...)
 #define SCN_STATE_LOGFUNC(_Fmt...)
 #define SCN_EVENT_LOGFUNC(_Fmt...)
-#define SCN_TRACE_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_DEBUG, XLOG_TAG, _Fmt)
+#define SCN_TRACE_LOGFUNC(_Fmt...)
 #define SCN_LOUD_LOGFUNC(_Fmt...)
 #define SCN_TEMP_LOGFUNC(_Fmt...)
 
@@ -1192,7 +1192,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 
 #define SAA_ERROR_LOGFUNC(_Fmt...)
 #define SAA_WARN_LOGFUNC(_Fmt...)
-#define SAA_INFO_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
+#define SAA_INFO_LOGFUNC(_Fmt...)
 #define SAA_STATE_LOGFUNC(_Fmt...)
 #define SAA_EVENT_LOGFUNC(_Fmt...)
 #define SAA_TRACE_LOGFUNC(_Fmt...)
@@ -1246,7 +1246,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 
 #define SEC_ERROR_LOGFUNC(_Fmt...)
 #define SEC_WARN_LOGFUNC(_Fmt...)
-#define SEC_INFO_LOGFUNC(_Fmt...) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
+#define SEC_INFO_LOGFUNC(_Fmt...)
 #define SEC_STATE_LOGFUNC(_Fmt...)
 #define SEC_EVENT_LOGFUNC(_Fmt...)
 #define SEC_TRACE_LOGFUNC(_Fmt...)
@@ -1255,7 +1255,7 @@ typedef UINT_32             KAL_WAKE_LOCK_T, *P_KAL_WAKE_LOCK_T;
 
 #define SEC_ERROR_LOGDUMP8(x, y)
 #define SEC_WARN_LOGDUMP8(x, y)
-#define SEC_INFO_LOGDUMP8(x, y) xlog_printk(ANDROID_LOG_INFO, XLOG_TAG, _Fmt)
+#define SEC_INFO_LOGDUMP8(x, y)
 #define SEC_STATE_LOGDUMP8(x, y)
 #define SEC_EVENT_LOGDUMP8(x, y)
 #define SEC_TRACE_LOGDUMP8(x, y)
@@ -1793,40 +1793,6 @@ kalRetrieveNetworkAddress(
     IN OUT PARAM_MAC_ADDRESS * prMacAddr
     );
 
-VOID
-kalReadyOnChannel (
-    IN P_GLUE_INFO_T    prGlueInfo,
-    IN UINT_64          u8Cookie,
-    IN ENUM_BAND_T      eBand,
-    IN ENUM_CHNL_EXT_T  eSco,
-    IN UINT_8           ucChannelNum,
-    IN UINT_32          u4DurationMs
-    );
-
-VOID
-kalRemainOnChannelExpired (
-    IN P_GLUE_INFO_T    prGlueInfo,
-    IN UINT_64          u8Cookie,
-    IN ENUM_BAND_T      eBand,
-    IN ENUM_CHNL_EXT_T  eSco,
-    IN UINT_8           ucChannelNum
-    );
-
-VOID
-kalIndicateMgmtTxStatus (
-    IN P_GLUE_INFO_T prGlueInfo,
-    IN UINT_64 u8Cookie,
-    IN BOOLEAN fgIsAck,
-    IN PUINT_8 pucFrameBuf,
-    IN UINT_32 u4FrameLen
-    );
-
-VOID
-kalIndicateRxMgmtFrame (
-    IN P_GLUE_INFO_T prGlueInfo,
-    IN P_SW_RFB_T prSwRfb
-    );
-
 
 /*----------------------------------------------------------------------------*/
 /* Routines in interface - ehpi/sdio.c                                                       */
@@ -1895,7 +1861,7 @@ kalQoSFrameClassifierAndPacketInfo (
     OUT PUINT_8 pucNetworkType
 );
 
-VOID
+inline VOID
 kalOidComplete (
     IN P_GLUE_INFO_T prGlueInfo,
     IN BOOLEAN fgSetQuery,
