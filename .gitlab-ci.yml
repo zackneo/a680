@@ -18,7 +18,7 @@ image: ubuntu:xenial
     - export ARCH_MTK_PLATFORM=mt6582
     - export SUBARCH=arm
     - export CROSS_COMPILE=$PWD/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
-    - make O=out -j2
+    - make -j2
 job_compiling: 
   stage: build
   tags:
